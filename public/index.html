@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Inscrição - Recital Escolar</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Inscrição para o Recital Escolar</h1>
+
+    <!-- FORMULÁRIO PRINCIPAL -->
+    <form id="formInscricao">
+      <h2>Dados pessoais</h2>
+
+      <label for="ra">RA (sem dígito):</label>
+      <input id="ra" name="ra" type="text" required />
+
+      <label for="digito">Dígito:</label>
+      <input id="digito" name="digito" type="text" required />
+
+      <label for="nomeCompleto">Nome completo:</label>
+      <input id="nomeCompleto" name="nomeCompleto" type="text" required />
+
+      <label for="turma">Turma:</label>
+      <input id="turma" name="turma" type="text" required />
+
+      <label for="periodo">Período:</label>
+      <select id="periodo" name="periodo" required>
+        <option value="" disabled selected>Selecione...</option>
+        <option>9:00 (Fundamental)</option>
+        <option>10:00 (Ensino médio)</option>
+      </select>
+
+      <label for="celular">Celular (opcional):</label>
+      <input id="celular" name="celular" type="text" />
+
+      <h2>Redes Sociais</h2>
+
+      <label for="temRede">Você tem rede social?</label>
+      <select id="temRede" name="temRede" required>
+        <option value="" disabled selected>Selecione...</option>
+        <option value="sim">Sim</option>
+        <option value="nao">Não tenho</option>
+      </select>
+
+      <div id="redeSocialCampos" class="hidden">
+        <label for="tipoRede">Tipo de rede social:</label>
+        <select id="tipoRede" name="tipoRede">
+          <option>Instagram</option>
+          <option>TikTok</option>
+          <option>Twitter/X</option>
+          <option>Facebook</option>
+          <option>Outra</option>
+        </select>
+
+        <label for="arroba">@ da pessoa:</label>
+        <input id="arroba" name="arroba" type="text" />
+      </div>
+
+      <h2>Perguntas obrigatórias</h2>
+
+      <label for="expectativa">O que você espera do evento e qual é a sua expectativa?</label>
+      <textarea id="expectativa" name="expectativa" rows="3" required></textarea>
+
+      <label for="motivo">Por que você decidiu participar do evento?</label>
+      <textarea id="motivo" name="motivo" rows="3" required></textarea>
+
+      <!-- botão não envia ao servidor ainda; apenas abre a tela de feedback -->
+      <button id="btnToFeedback" type="button">Continuar para feedback</button>
+    </form>
+
+    <!-- TELA DE FEEDBACK (aparece antes de finalizar) -->
+    <form id="feedbackForm" class="hidden">
+      <h2>Feedback rápido</h2>
+      <p>Responda rapidinho antes de finalizar sua inscrição:</p>
+
+      <label for="r1">Como você está se sentindo em relação ao recital?</label>
+      <input id="r1" name="r1" type="text" required />
+
+      <label for="r2">Qual parte do evento você está mais ansioso(a) para participar?</label>
+      <input id="r2" name="r2" type="text" required />
+
+      <div style="display:flex;gap:8px;margin-top:12px;">
+        <button id="btnBack" type="button">Voltar e editar</button>
+        <button id="btnEnviarTudo" type="submit">Enviar inscrição + feedback</button>
+      </div>
+    </form>
+
+    <!-- TELA DE SUCESSO -->
+    <div id="sucesso" class="hidden">
+      <h2>Inscrição enviada com sucesso!</h2>
+      <p>Seu protocolo: <strong id="protocolo"></strong></p>
+      <p>Obrigado! Você receberá atualizações se optar por isso.</p>
+      <button onclick="window.location.reload()">Nova inscrição</button>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

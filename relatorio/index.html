@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Relatório de Inscrições - Hoje</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="topbar">
+      <h1>Relatório de Inscrições — Hoje</h1>
+      <div class="actions">
+        <button id="btnRefresh" title="Atualizar lista">🔄 Atualizar</button>
+        <button id="btnExport" title="Exportar para CSV">📥 Exportar CSV</button>
+        <button id="btnPrint" title="Imprimir">🖨 Imprimir</button>
+      </div>
+    </header>
+
+    <section id="status" class="status">Carregando...</section>
+
+    <section class="table-wrap">
+      <table id="relatorioTable" class="table hidden">
+        <thead>
+          <tr>
+            <th>Data / Hora</th>
+            <th>Nome</th>
+            <th>RA</th>
+            <th>Turma</th>
+            <th>Periodo</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <!-- Linhas populadas via JS -->
+        </tbody>
+      </table>
+
+      <div id="empty" class="empty hidden">
+        Não há inscrições para o dia de hoje.
+      </div>
+    </section>
+
+    <footer class="note">
+      <small>Relatório gerado localmente. Proteja esta página (acesso administrativo).</small>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

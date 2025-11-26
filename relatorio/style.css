@@ -1,0 +1,105 @@
+:root{
+  --bg: #f5f7fb;
+  --card: #ffffff;
+  --accent: #1a73e8;
+  --muted: #6b7280;
+  --border: #e6e9ef;
+  --success: #16a34a;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:var(--bg);
+  color:#111827;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding:20px;
+}
+
+.wrap{
+  max-width:1000px;
+  margin:20px auto;
+  background:var(--card);
+  border-radius:10px;
+  box-shadow:0 6px 20px rgba(20,25,45,0.06);
+  padding:18px;
+  border:1px solid var(--border);
+}
+
+.topbar{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:12px;
+}
+.topbar h1{font-size:1.2rem;margin:0}
+.actions button{
+  background:#fff;
+  border:1px solid var(--border);
+  padding:8px 12px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
+}
+.actions button:hover{box-shadow:0 4px 10px rgba(26,115,232,0.08)}
+
+.status{
+  padding:10px 12px;
+  border-radius:8px;
+  background:linear-gradient(90deg, rgba(26,115,232,0.06), rgba(26,115,232,0.02));
+  color:var(--muted);
+  margin-bottom:14px;
+  font-size:0.95rem;
+}
+
+.table-wrap{
+  overflow:auto;
+  border-radius:8px;
+  border:1px solid var(--border);
+  background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4));
+}
+
+/* Table */
+.table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:600px;
+}
+.table thead tr{
+  background:linear-gradient(90deg, rgba(250,250,251,1), rgba(245,247,250,1));
+}
+.table th, .table td{
+  text-align:left;
+  padding:12px 14px;
+  border-bottom:1px solid var(--border);
+  font-size:0.95rem;
+}
+.table tbody tr:hover{background:rgba(26,115,232,0.02)}
+
+.empty{
+  padding:28px;
+  text-align:center;
+  color:var(--muted);
+  font-weight:600;
+}
+
+/* footer note */
+.note{
+  margin-top:12px;
+  color:var(--muted);
+  text-align:right;
+  font-size:0.85rem;
+}
+
+/* hidden helper */
+.hidden{display:none}
+
+/* responsive */
+@media (max-width:640px){
+  .topbar{flex-direction:column;align-items:flex-start;gap:8px}
+  .actions{display:flex;gap:6px}
+  .table{min-width:480px}
+}
