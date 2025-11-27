@@ -76,9 +76,8 @@ feedbackForm.addEventListener("submit", async (e) => {
   };
 
   try {
-    // Enviar inscrição
-    const insc = await fetch("https://recital-j619.onrender.com/inscrever", {
-
+    // Enviar inscrição para o backend na MESMA origem
+    const insc = await fetch("/inscrever", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(dadosInscricaoTemp)
@@ -89,8 +88,7 @@ feedbackForm.addEventListener("submit", async (e) => {
     const inscJson = await insc.json();
 
     // Enviar feedback
-    const fb = await fetch("https://recital-j619.onrender.com/feedback", {
-
+    const fb = await fetch("/feedback", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(feedbackDados)
