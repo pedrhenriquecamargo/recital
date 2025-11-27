@@ -102,6 +102,11 @@ app.post("/feedback", async (req, res) => {
   }
 });
 
+// ➜ ROTA PRINCIPAL DO RENDER
+app.get("/", (req, res) => {
+  res.send("API do Recital Funcionando.");
+});
+
 // =========================
 //   INICIAR SERVIDOR
 // =========================
