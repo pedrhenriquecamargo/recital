@@ -1,10 +1,11 @@
 console.log("MONGO_URI carregado ->", process.env.MONGO_URI);
 
-
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
 
 dotenv.config();
 
@@ -12,7 +13,24 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// ====== CONEXÃO COM MONGO ======
+// =========================
+//   AJUSTE PARA ES MODULES
+// =========================
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// =========================
+//   SERVIR PASTA /public
+// =========================
+app.use(express.static(path.join(__dirname, "public")));
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+// =========================
+//   CONEXÃO COM MONGO
+// =========================
 mongoose.connect(process.env.MONGO_URI, {
   serverSelectionTimeoutMS: 5000
 })
@@ -22,8 +40,9 @@ mongoose.connect(process.env.MONGO_URI, {
   console.error("Erro ao conectar no Mongo:", err);
 });
 
-
-// ====== MODELS ======
+// =========================
+//   MODELS
+// =========================
 
 // coleção: inscricaos
 const InscricaoSchema = new mongoose.Schema({
@@ -54,7 +73,9 @@ const FeedbackSchema = new mongoose.Schema({
 
 const Feedback = mongoose.model("feedback", FeedbackSchema);
 
-// ====== ROTAS ======
+// =========================
+//   ROTAS
+// =========================
 
 // CRIAR INSCRIÇÃO
 app.post("/inscrever", async (req, res) => {
@@ -81,6 +102,8 @@ app.post("/feedback", async (req, res) => {
   }
 });
 
-// ====== SERVIDOR ======
+// =========================
+//   INICIAR SERVIDOR
+// =========================
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
