@@ -24,6 +24,7 @@ const __dirname = path.dirname(__filename);
 // =========================
 app.use(express.static(path.join(__dirname, "public")));
 
+// ROTA PRINCIPAL → envia o index.html
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
@@ -44,7 +45,6 @@ mongoose.connect(process.env.MONGO_URI, {
 //   MODELS
 // =========================
 
-// coleção: inscricaos
 const InscricaoSchema = new mongoose.Schema({
   ra: String,
   digito: String,
@@ -62,7 +62,6 @@ const InscricaoSchema = new mongoose.Schema({
 
 const Inscricao = mongoose.model("inscricaos", InscricaoSchema);
 
-// coleção: feedback
 const FeedbackSchema = new mongoose.Schema({
   ra: String,
   nome: String,
@@ -77,7 +76,6 @@ const Feedback = mongoose.model("feedback", FeedbackSchema);
 //   ROTAS
 // =========================
 
-// CRIAR INSCRIÇÃO
 app.post("/inscrever", async (req, res) => {
   try {
     const salvar = await Inscricao.create(req.body);
@@ -91,7 +89,6 @@ app.post("/inscrever", async (req, res) => {
   }
 });
 
-// CRIAR FEEDBACK
 app.post("/feedback", async (req, res) => {
   try {
     await Feedback.create(req.body);
@@ -100,11 +97,6 @@ app.post("/feedback", async (req, res) => {
     console.error(err);
     res.status(500).json({ erro: "Erro ao registrar feedback" });
   }
-});
-
-// ➜ ROTA PRINCIPAL DO RENDER
-app.get("/", (req, res) => {
-  res.send("API do Recital Funcionando.");
 });
 
 // =========================

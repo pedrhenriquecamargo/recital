@@ -2,7 +2,7 @@ body {
   font-family: Arial, sans-serif;
   background: 
     linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-    url("/img/recital.jpg") no-repeat center center fixed;
+    url("img/recital.jpg") no-repeat center center fixed;
   background-size: cover;
   padding: 20px;
 }
